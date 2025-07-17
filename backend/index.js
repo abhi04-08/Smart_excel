@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors({
-  origin: "https://smart-excel-oa62.vercel.app/",
+  origin: "https://smart-excel-oa62.vercel.app",
   credentials: true
 }));
 app.use(express.json());
