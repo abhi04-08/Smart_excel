@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import apiUrl from '../api';
 
 const History = () => {
     const[uploads, setUploads] = useState([]);
@@ -7,7 +8,7 @@ const History = () => {
     useEffect(() => {
         const fetchHistory = async () =>{
             try{
-                const res = await axios.get('http://localhost:5000/api/upload/history');
+                const res = await axios.get(`${apiUrl}/api/upload/history`);
                 setUploads(res.data);
             }catch(err){
                 console.error('Error fetching the data', err);

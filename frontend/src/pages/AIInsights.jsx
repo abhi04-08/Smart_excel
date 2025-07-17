@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import apiUrl from '../api';
 
 const AIInsights = () =>{
     const[file, setFile] = useState(null);
@@ -16,10 +17,10 @@ const AIInsights = () =>{
         formData.append('file', file);
 
         try{
-            const res = await axios.post("http://localhost:5000/api/upload", formData);
+            const res = await axios.post(`${apiUrl}/api/upload`, formData);
             const excelData = res.data.data;
 
-            const insightsRes = await axios.post("http://localhost:5000/api/insights", {data : excelData});
+            const insightsRes = await axios.post(`${apiUrl}/api/insights`, {data : excelData});
             setInsights(insightsRes.data.insights);
         }catch(err) {
             alert('Failed to generate ai insights.');

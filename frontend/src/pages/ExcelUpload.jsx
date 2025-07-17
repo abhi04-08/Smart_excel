@@ -3,6 +3,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
 import {Bar} from 'react-chartjs-2';
+import apiUrl from '../api';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -34,7 +35,7 @@ function ExcelUpload() {
         formData.append('file', file);
 
         try{
-            const res = await axios.post('http://localhost:5000/api/upload', formData);
+            const res = await axios.post(`${apiUrl}/api/upload`, formData);
             setData(res.data.data);
             setColumns(Object.keys(res.data.data[0]));
             setShowChart(false);

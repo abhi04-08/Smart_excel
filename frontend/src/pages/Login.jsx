@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom';
+import apiUrl from '../api';
 
 function Login(){
     const [form, setForm] = useState({email:'', password:''})
@@ -13,7 +14,7 @@ function Login(){
     const handleSubmit = async e =>{
         e.preventDefault();
         try{
-            const res = await axios.post("http://localhost:5000/api/auth/login", form);
+            const res = await axios.post(`${apiUrl}/api/auth/login`, form);
             alert(`Welcome ${res.data.user.name}`);
             localStorage.setItem('token', res.data.token);
             navigate('/dashboard');
