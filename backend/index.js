@@ -5,7 +5,10 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://smart-excel-oa62.vercel.app/",
+  credentials: true
+}));
 app.use(express.json());
 app.use('/api/upload', uploadRoutes);
 
